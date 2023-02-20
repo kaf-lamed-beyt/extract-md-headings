@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import fs from "fs";
 export function extractHeadings(filePath) {
     var content = fs.readFileSync(filePath, "utf-8");
     var headings = [];

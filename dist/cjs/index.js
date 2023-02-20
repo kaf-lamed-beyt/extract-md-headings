@@ -2,9 +2,9 @@
 exports.__esModule = true;
 exports.extractHeadings = void 0;
 var tslib_1 = require("tslib");
-var fs = tslib_1.__importStar(require("fs"));
+var fs_1 = tslib_1.__importDefault(require("fs"));
 function extractHeadings(filePath) {
-    var content = fs.readFileSync(filePath, "utf-8");
+    var content = fs_1["default"].readFileSync(filePath, "utf-8");
     var headings = [];
     // match the `#` syntax for headings
     var headingMatcher = /^(#+)\s(.+)$/gm;

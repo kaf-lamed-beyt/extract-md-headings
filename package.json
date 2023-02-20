@@ -1,6 +1,6 @@
 {
   "name": "extract-md-headings",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "lightweight heading text extractor from markdown files",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
