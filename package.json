@@ -15,10 +15,10 @@
     "url": "git+https://github.com/kaf-lamed-beyt/extract-md-headings.git"
   },
   "keywords": [
+    "headings",
     "markdown",
     "mdx",
-    "md",
-    "table-of-contents"
+    "md"
   ],
   "author": "Caleb Olojo -- @kaf-lamed-beyt",
   "license": "MIT",
@@ -26,13 +26,13 @@
     "url": "https://github.com/kaf-lamed-beyt/extract-md-headings/issues"
   },
   "homepage": "https://github.com/kaf-lamed-beyt/extract-md-headings#readme",
-  "dependencies": {
-    "@types/node": "^18.14.0",
-    "typescript": "^4.9.5"
-  },
   "files": [
     "dist",
     "LICENSE",
     "README.md"
-  ]
+  ],
+  "devDependencies": {
+    "@types/node": "^18.14.0",
+    "typescript": "^4.9.5"
+  }
 }
