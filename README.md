@@ -47,6 +47,30 @@ If You have a makrdown file with headings, let's take this [article](https://mej
 
 The essence of the `level` property is so you can utilize it when you are trying to create, say, a Table of Content component for your block and you want to group the headings in such a way that the lower heading titles become children of higher headins elements. This is to create more of a visual appeal BTW.
 
+## Module resolution
+
+The packages supports both ECMAScript &mdash; `esm` &mdash; and commonJS (`cjs`) modules. so if peradventure you try to use the package by doing the following, below, and you get this error: **"ReferenceError: exports is not defined in ES module scope"**
+
+```js
+import { extractHeadings } from "extract-md-headings";
+```
+
+One way to fix this would be to use this import statement instead of the one above
+
+```js
+import { extractHeadings } from "extract-md-headings/dist/esm";
+```
+
+And if you're coming from Next.js, you may want to use a module transpiler like `next-transpile-modules`. Install the package and modify `next.config.js` to look like this
+
+```js
+const withTM = require('next-transpile-modules')(['extract-md-headings']);
+
+module.exports = withTM({
+  ...
+});
+```
+
 ## Examples
 
 Take this package for a spin, and let me know what you've been able to build with it by contributing to the project.
