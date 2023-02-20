@@ -1,0 +1,38 @@
+{
+  "name": "extract-md-headings",
+  "version": "1.0.0",
+  "description": "lightweight heading text extractor from markdown files",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "build:esm": "tsc",
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaf-lamed-beyt/extract-md-headings.git"
+  },
+  "keywords": [
+    "markdown",
+    "mdx",
+    "md",
+    "table-of-contents"
+  ],
+  "author": "Caleb Olojo -- @kaf-lamed-beyt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaf-lamed-beyt/extract-md-headings/issues"
+  },
+  "homepage": "https://github.com/kaf-lamed-beyt/extract-md-headings#readme",
+  "dependencies": {
+    "@types/node": "^18.14.0",
+    "typescript": "^4.9.5"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
+}
