@@ -77,6 +77,89 @@ Take this package for a spin, and let me know what you've been able to build wit
 
 Future examples will appear here.
 
+### With Next.js
+
+These issue of module resolution can be avoided when you use the function in a Next.js app. Say you're trying to build a Table Of Content component, do not try using the function inside the component like the one below, and get the headings from `getStaticProps()`
+
+```js
+import React from "react";
+import { extractHeadings } from "extract-md-headings";
+
+const TableOfContents = ({ filePath }) => {
+  const headings = extractHeadings(filePath);
+
+  return (
+    <div>
+      <p>On this page</p>
+      <ul>
+        {headings.map(({ slug, title }, index) => {
+          return (
+            <li key={index}>
+              <a href={`#${slug}`}>{title}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+export default TableOfContents;
+```
+
+When you do something like, this, Next.js would throw an error similar to the one below
+
+```bash
+TypeError: fs__WEBPACK_IMPORTED_MODULE_0___default(...).readFileSync is not a function
+```
+
+This is because `extract-md-headings` uses the `readFileSync` method from the [Node.js fs() module](https://nodejs.org/api/fs.html), and Next.js throws an error, because Node.js functions are mostly used for server-side operations.
+
+In your case here, you're using the function in a client-side component. Hence, the error. To fix this, you modify `<TableOfContent />` to exclude the function's invocation, and use a `headings` prop, or anything you feel like using.
+
+Then we'd have something like the snippet below;
+
+```jsx
+import React from "react";
+import Head from "next/head";
+import TableOfContents from "@components/TOC";
+import { extractHeadings } from "extract-md-headings";
+
+export default function Blog({
+  post: {
+    fileContent,
+    frontmatter: { title },
+  },
+}) {
+  return (
+    <React.Fragment>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <TableOfContents headings={fileContent} />
+    </React.Fragment>
+  );
+}
+
+// destructuring params to get the unique slugs
+export async function getStaticProps({ params }) {
+  // fetch the particular file based on the slug,
+  // and use the function to extract headings
+  const { slug } = params;
+  const mdxContent = extractHeadings(`./data/articles/${slug}.mdx`);
+
+  return {
+    props: {
+      post: {
+        frontmatter,
+        source: mdxSource,
+        fileContent: mdxContent,
+      },
+    },
+  };
+}
+```
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md)
