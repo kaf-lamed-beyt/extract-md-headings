@@ -6,6 +6,12 @@ interface Heading {
   level: number;
 }
 
+/**
+ * @description gets all the heading-text from a markdown file
+ * @param {string} filePath  a valid relative path, as a string to where the markdown file is located.
+ * @returns an array of objects containing the heading information like the `title`, `slug`, and `level`
+ * @see [Documentation](https://github.com/kaf-lamed-beyt/extract-md-headings#usage)
+ */
 export function extractHeadings(filePath: string): Array<Heading> {
     const content = fs.readFileSync(filePath, "utf-8")
     const headings: Array<Heading> = [];
