@@ -1,6 +1,6 @@
-<h1 align="center"># extract-md-headings</h1>
+<h1 align="center">extract-md-headings</h1>
 
-This package exports a function that you can use to "extract" &mdash; obviously &mdash; headings from any markdown file, with the `.md` or `.mdx` extensions.
+This package exports a function that you can use to "extract" headings from any markdown file, with the `.md` or `.mdx` extensions.
 
 ## Usage
 
