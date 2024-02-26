@@ -1,6 +1,6 @@
 import fs from "fs";
 
-interface Heading {
+export interface Heading {
   id: number;
   slug: string;
   title: string;
