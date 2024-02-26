@@ -8,17 +8,19 @@ interface Heading {
 }
 
 export interface ExtractHeadingsOptions {
+  /**
+   * A function to convert the heading title to a slug, if you wish to override the default slug generation algorithm
+   *
+   * @param title The heading to slugify
+   * @returns The slugified heading
+   */
   slugFn?: (title: string) => string;
 }
 
 /**
- * @typedef ExtractHeadingsOptions
- * @type {object}
- * @property {function} slugFn - a function to convert the heading title to a slug, if you wish to override the default slug generation algorithm
- *
  * @description gets all the heading-text from a markdown file
- * @param {string} filePath  a valid relative path, as a string to where the markdown file is located.
- * @param {ExtractHeadingsOptions} options an optional configuration object to customize the behaviour of the function
+ * @param {string} filePath a valid relative path, as a string to where the markdown file is located.
+ * @param {Object} options an optional configuration object to customize the behaviour of the function
  * @returns an array of objects containing the heading information like the `id`, `title`, `slug`, and `level`
  * @see [Documentation](https://github.com/kaf-lamed-beyt/extract-md-headings#usage)
  */
